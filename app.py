@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load job roles dataset
 @st.cache_data
 def load_data():
-    return pd.read_csv("job_roles_skills.csv") 
+    return pd.read_csv("job_roles_skills.csv")  # Ensure the CSV file is in the same directory
 
 df = load_data()
 
@@ -36,21 +36,21 @@ st.set_page_config(page_title="Job Role Recommender", page_icon="🔍", layout="
 
 # Sidebar for instructions
 with st.sidebar:
-    st.title("About This App")
+    st.title("⚙️ About This App")
     st.write(
         """
         This AI-powered tool recommends the **top 3 most similar job roles** based on required skills.
         
-        -  **Type a job role** or **select from the list**.
-        -  **See job similarity scores** visually.
-        -  **Helps career changers & job seekers** find related roles!
+        - 🔎 **Type a job role** or **select from the list**.
+        - 📊 **See job similarity scores** visually.
+        - 🚀 **Helps career changers & job seekers** find related roles!
         """
     )
     st.markdown("---")
-    st.write("**Created by Aiman Suhail**")
+    st.write("📌 **Created by Aiman Suhail**")
 
 # Main UI
-st.title(" Job Role Recommendation Engine")
+st.title("🔍 Job Role Recommendation Engine")
 
 # Search bar for job roles
 selected_role = st.text_input("Enter a job role:", "").strip()
@@ -64,9 +64,9 @@ if st.button("Find Similar Roles"):
     recommendations = recommend_roles(selected_role, df, cosine_sim)
 
     if recommendations:
-        st.subheader(f" Top 3 Similar Roles to **{selected_role}**:")
+        st.subheader(f"📌 Top 3 Similar Roles to **{selected_role}**:")
         for role, score in recommendations:
             st.write(f"### {role}  \n🔹 **Similarity Score:** `{score:.2f}`")
             st.progress(float(score))  # Visual bar representation
     else:
-        st.warning(" No similar roles found. Try a different job title.")
+        st.warning("⚠️ No similar roles found. Try a different job title.")

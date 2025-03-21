@@ -25,9 +25,9 @@ This project is a job role recommendation system that helps users find similar j
 
 ---
 
-## Why Did We Choose Cosine Similarity?
+## Why Did I Choose Cosine Similarity?
 
-### Other Methods We Considered  
+### Other Methods I Considered  
 - Jaccard Similarity measures how many skills two jobs have in common.  
 - However, Jaccard does not consider how important each skill is, which makes it less effective.  
 
